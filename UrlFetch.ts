@@ -1,3 +1,6 @@
+/* eslint @typescript-eslint/no-empty-interface: off */
+/* eslint @typescript-eslint/camelcase: off */
+
 export interface UrlFetchRequest { }
 
 export interface UrlFetchResponse { }

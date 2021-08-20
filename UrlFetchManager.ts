@@ -21,17 +21,22 @@ ${error.stack}`;
     }
 }
 
+/* eslint-disable @typescript-eslint/camelcase */
+type URLFetchRequest = GoogleAppsScript.URL_Fetch.URLFetchRequest;
+type HTTPResponse = GoogleAppsScript.URL_Fetch.HTTPResponse;
+/* eslint-enable */
+
 export class UrlFetchManager {
     public static execute(streams: UrlFetch.UrlFetchStream | UrlFetch.UrlFetchStream[]): UrlFetch.Result {
         if (!Array.isArray(streams)) {
             streams = [streams];
         }
         const length = streams.length;
-        const requests: GoogleAppsScript.URL_Fetch.URLFetchRequest[] = [];
+        const requests: URLFetchRequest[] = [];
         for (let i = 0; i < length; i++) {
             requests.push(streams[i].getRawRequest());
         }
-        let responses: GoogleAppsScript.URL_Fetch.HTTPResponse[] = [];
+        let responses: HTTPResponse[] = [];
         try {
             responses = UrlFetchApp.fetchAll(requests);
         }
@@ -53,12 +58,12 @@ export class UrlFetchManager {
             streams = [streams];
         }
         const length = streams.length;
-        const requests: GoogleAppsScript.URL_Fetch.URLFetchRequest[] = [];
+        const requests: URLFetchRequest[] = [];
         for (let i = 0; i < length; i++) {
             requests.push(streams[i].getRawRequest());
         }
 
-        const responses: GoogleAppsScript.URL_Fetch.HTTPResponse[] = new Array(length);
+        const responses: HTTPResponse[] = new Array(length);
         try {
             for (let i = 0; i < length; i++) {
                 const req = requests[i];
