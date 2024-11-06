@@ -1,4 +1,4 @@
-export enum UrlFetchStreamStatus {
+enum UrlFetchStreamStatus {
     NotRunning,
     Completed,
 }
